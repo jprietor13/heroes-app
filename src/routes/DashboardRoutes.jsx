@@ -4,6 +4,7 @@ import { Navbar } from "../components/ui/Navbar";
 import { MarvelScreen } from "../components/marvel/MarvelScreen";
 import { DcScreen } from "../components/dc/DcScreen";
 import { SearchScreen } from "../components/search/SearchScreen";
+import { HeroScreen } from "../components/hero/HeroScreen";
 
 export const DashboardRoutes = () => {
   return (
@@ -14,6 +15,7 @@ export const DashboardRoutes = () => {
         <Route exact path="/marvel" element={<MarvelScreen />} />
         <Route exact path="/dc" element={<DcScreen />} />
         <Route exact path="/search" element={<SearchScreen />} />
+        <Route exact path="/hero" element={ <HeroScreen /> }/>
       </Routes>
     </>
   );
