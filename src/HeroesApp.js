@@ -1,9 +1,10 @@
 import React from 'react'
+import { AppRoutes } from './routes/AppRoutes'
 
 export const HeroesApp = () => {
   return (
     <>
-      <h1>HeroesApp</h1>     
+      <AppRoutes /> 
     </>
   )
 }
