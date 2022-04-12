@@ -10,6 +10,7 @@ export const DashboardRoutes = () => {
   return (
     <>
       <Navbar />
+      <div className="container mt-5">
       <Routes>
         <Route exact path="/" element={<MarvelScreen />} />
         <Route exact path="/marvel" element={<MarvelScreen />} />
@@ -17,6 +18,7 @@ export const DashboardRoutes = () => {
         <Route exact path="/search" element={<SearchScreen />} />
         <Route exact path="/hero" element={ <HeroScreen /> }/>
       </Routes>
+      </div>
     </>
   );
 };
