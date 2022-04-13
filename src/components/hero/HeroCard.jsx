@@ -24,7 +24,7 @@ characters }) => {
               <p className='text-muted'>{characters}</p>
             }
             <p className='card-text'>{first_appearance}</p>
-            <NavLink to={`${id}`}>
+            <NavLink to={`/hero/${id}`}>
               Mas...
             </NavLink>
           </div>
