@@ -1,14 +1,20 @@
 import React, { useMemo } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { useForm } from '../../hooks/useForm'
+import queryString from 'query-string'
 import { getHeroesByName } from '../../helpers/getHeroesByName'
 import { HeroCard } from '../hero/HeroCard'
 
 export const SearchScreen = () => {
-  const [ {searchText} , handleInputChange ] = useForm()
-  const resultHeroes = useMemo(() => getHeroesByName(searchText), [searchText])
+  const navigate = useNavigate()
+  const location = useLocation()
+  const { q = '' } = queryString.parse(location.search)
+  const [ {searchText = q} , handleInputChange ] = useForm()
+  const resultHeroes = useMemo(() => getHeroesByName(q), [q])
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    navigate(`?q=${searchText}`)
   }
 
   return (

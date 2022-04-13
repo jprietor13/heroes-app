@@ -2,9 +2,7 @@ import { useState } from 'react'
 
 export const useForm = () => {
 
-  const [formData, setFormData] = useState({
-    searchText: ''
-  })
+  const [formData, setFormData] = useState({})
 
   const handleInputChange = ({ target }) => {
     setFormData({
