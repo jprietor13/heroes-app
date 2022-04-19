@@ -13,6 +13,8 @@ export const LoginScreen = () => {
   })
   const { userName } = formData
 
+  const lastPath = localStorage.getItem('lastPath') || '/marvel'
+
   const handleLogin = () => {
     if(userName.trim().length < 1) {
       return null
@@ -29,7 +31,7 @@ export const LoginScreen = () => {
 
     dispatch(action)
 
-    navigate('/', { replace: true })
+    navigate(lastPath, { replace: true })
 
   }
 
