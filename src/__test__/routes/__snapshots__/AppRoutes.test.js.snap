@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en <AppRoutes /> Debe de mostrar el login si el usuario no esta autenticado 1`] = `
+<div
+  className="container mt-5"
+>
+  <h1>
+    Login
+  </h1>
+  <hr />
+  <input
+    autoComplete="off"
+    className="form-control"
+    name="userName"
+    onChange={[Function]}
+    placeholder="Nombre Usuario"
+    type="text"
+    value=""
+  />
+  <button
+    className="btn btn-primary mt-2"
+    onClick={[Function]}
+    type="button"
+  >
+    Login
+  </button>
+</div>
+`;
