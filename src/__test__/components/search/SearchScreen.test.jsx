@@ -2,6 +2,13 @@ import { mount } from "enzyme";
 import { MemoryRouter } from "react-router-dom";
 import { SearchScreen } from "../../../components/search/SearchScreen";
 
+const mockNavigate = jest.fn() //mock es un keyword para que funcione
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockNavigate, //simulamos el useNavigate del react roiter dom por medio de requireActual
+}))
+
 describe("Pruebas en <SearchScreen />", () => {
   test("Debe cargarse correctamente", () => {
     const wrapper = mount(
@@ -37,4 +44,28 @@ describe("Pruebas en <SearchScreen />", () => {
       "Sin coincidencias para batman123"
     );
   });
+
+  test("Debe de llamar el navigate a la nueva pantalla", () => {
+
+    const wrapper = mount(
+      <MemoryRouter initialEntries={["/search"]}>
+        <SearchScreen />
+      </MemoryRouter>
+    );
+
+    //obteniendo el valor del input
+    wrapper.find('input').simulate('change', {
+      target: {
+        name: 'searchText', //nombre del input
+        value: 'batman' //valor esperado
+      }
+    })
+
+    wrapper.find('form').prop('onSubmit')({
+      preventDefault(){}
+
+    })
+
+    expect(mockNavigate).toHaveBeenCalledWith('?q=batman')
+  })
 });
