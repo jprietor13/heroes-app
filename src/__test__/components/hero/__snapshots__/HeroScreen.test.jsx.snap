@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en <HeroScreen /> Debe cargarse corretamente 1`] = `
+<h1>
+  Hero Not Found
+</h1>
+`;
