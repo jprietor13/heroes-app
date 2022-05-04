@@ -2,6 +2,8 @@ import React, { useMemo } from 'react'
 import { useParams, Navigate, useNavigate } from 'react-router-dom'
 import { getHeroesById } from '../../helpers/getHeroesById'
 
+const heroImage = require.context('../../assets/images', true)
+
 export const HeroScreen = () => {
 
   const { idHero } = useParams();
@@ -15,7 +17,7 @@ export const HeroScreen = () => {
     return <Navigate to="/" />
   }
 
-  const imageHero = `/assets/images/${hero.id}.jpg`
+  //const imageHero = `/assets/images/${hero.id}.jpg`
 
   const handleReturn = () => {
     // if(hero.publisher === "DC Comics"){
@@ -29,7 +31,7 @@ export const HeroScreen = () => {
   return (
     <div className="row mt-5">
       <div className="col-4 animate__animated animate__backInLeft">
-        <img src={imageHero} alt={hero.superhero} className="img-thumbnail"/>
+        <img src={heroImage(`./${hero.id}.jpg`)} alt={hero.superhero} className="img-thumbnail"/>
       </div>
       <div className="col-8 animate__animated animate__backInUp">
         <h3>{hero.superhero}</h3>
