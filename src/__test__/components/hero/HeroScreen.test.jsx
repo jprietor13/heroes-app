@@ -33,12 +33,39 @@ describe("Pruebas en <HeroScreen />", () => {
       <MemoryRouter initialEntries={ ['/hero/marvel-spider'] }>
         <Routes>
           <Route path="/hero/:idHero" element={ <HeroScreen /> } />
-          <Route path="/hero" element={ <h1>Hero Not Found test</h1> } />
+          <Route path="/hero" element={ <h1>Hero Not Found</h1> } />
         </Routes>
       </MemoryRouter>
     )
  
     expect(wrapper.find('h3').exists()).toBe(true)
+  })
+
+  it('Debe retornar a la vista anterior', () => {
+    const wrapper = mount(
+      <MemoryRouter initialEntries={ ['/hero/marvel-spider'] }>
+        <Routes>
+          <Route path="/hero/:idHero" element={ <HeroScreen /> } />
+        </Routes>
+      </MemoryRouter>
+    )
+
+    wrapper.find('button').prop('onClick')()
+    expect(mockNavigate).toHaveBeenCalledWith(-1)
+  })
+
+  it('Debe de mostrar el No Hero Page si no se tiene un heroe', () => {
+    const wrapper = mount(
+      <MemoryRouter initialEntries={ ['/hero/marvel-spider23546'] }>
+        <Routes>
+          <Route path="/hero/:idHero" element={ <HeroScreen /> } />
+          <Route path="/" element={ <h1>Hero Not Found</h1> } />
+        </Routes>
+      </MemoryRouter>
+    )
+    
+    expect(wrapper.text()).toBe('Hero Not Found')  
+
   })
 
 })
